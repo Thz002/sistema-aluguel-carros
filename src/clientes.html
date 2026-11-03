@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clientes | AlugaCar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main class="container">
+    <div id="alertas"></div>
+
+    <div class="row g-4 justify-content-center">
+      <section class="col-lg-5">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 id="tituloForm" class="h5 mb-3">Cadastro de cliente</h2>
+            <form id="formCliente" novalidate>
+              <input type="hidden" name="id">
+
+              <div class="mb-2">
+                <label class="form-label" for="nome">Nome</label>
+                <input class="form-control" id="nome" name="nome" required>
+              </div>
+              <div class="row g-2 mb-2">
+                <div class="col-6">
+                  <label class="form-label" for="rg">RG</label>
+                  <input class="form-control" id="rg" name="rg" required>
+                </div>
+                <div class="col-6">
+                  <label class="form-label" for="cpf">CPF</label>
+                  <input class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                </div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label" for="endereco">Endereço</label>
+                <input class="form-control" id="endereco" name="endereco" required>
+              </div>
+              <div class="mb-2">
+                <label class="form-label" for="profissao">Profissão</label>
+                <input class="form-control" id="profissao" name="profissao">
+              </div>
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <label class="form-label" for="login">Login</label>
+                  <input class="form-control" id="login" name="login" required>
+                </div>
+                <div class="col-6">
+                  <label class="form-label" for="senha">Senha</label>
+                  <input class="form-control" id="senha" name="senha" type="password" required>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="fw-semibold">Empregadores e rendimentos <small class="text-muted">(máx. 3)</small></span>
+                <button type="button" id="btnAddEmprego" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-plus"></i> Adicionar
+                </button>
+              </div>
+              <div id="empregos" class="mb-3"></div>
+
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Salvar</button>
+                <button type="button" id="btnLimpar" class="btn btn-outline-secondary">Limpar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="secaoLista" class="col-lg-7">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="h5 mb-3">Clientes cadastrados</h2>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr><th>Nome</th><th>CPF</th><th>Profissão</th><th>Renda total</th><th></th></tr>
+                </thead>
+                <tbody id="tabelaClientes"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/controllers/ClienteController.js"></script>
+</body>
+</html>

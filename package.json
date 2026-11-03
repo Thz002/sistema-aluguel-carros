@@ -1,0 +1,13 @@
+{
+  "name": "sistema-aluguel-carros",
+  "version": "1.0.0",
+  "description": "Sistema de Aluguel de Carros - LAB02 DIW (PUC Minas)",
+  "scripts": {
+    "start": "json-server --watch db.json --static ./src --port 3000"
+  },
+  "author": "Thiago Duarte",
+  "license": "MIT",
+  "devDependencies": {
+    "json-server": "0.17.4"
+  }
+}

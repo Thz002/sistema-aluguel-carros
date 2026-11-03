@@ -1,0 +1,17 @@
+body {
+  background-color: #f5f7fb;
+  min-height: 100vh;
+}
+
+main {
+  padding-bottom: 2rem;
+}
+
+.atalho {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.atalho:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12) !important;
+}

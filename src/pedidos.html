@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus pedidos | AlugaCar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main class="container">
+    <div id="alertas"></div>
+
+    <div class="row g-4">
+      <section class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 id="tituloForm" class="h5 mb-3">Novo pedido de aluguel</h2>
+            <form id="formPedido" novalidate>
+              <input type="hidden" name="id">
+              <div class="mb-2">
+                <label class="form-label" for="automovelId">Automóvel</label>
+                <select class="form-select" id="automovelId" name="automovelId" required></select>
+              </div>
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <label class="form-label" for="dataInicio">Início</label>
+                  <input class="form-control" id="dataInicio" name="dataInicio" type="date" required>
+                </div>
+                <div class="col-6">
+                  <label class="form-label" for="dataFim">Fim</label>
+                  <input class="form-control" id="dataFim" name="dataFim" type="date" required>
+                </div>
+              </div>
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-send"></i> Enviar</button>
+                <button type="button" id="btnLimpar" class="btn btn-outline-secondary">Limpar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="h5 mb-3">Meus pedidos</h2>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr><th>#</th><th>Automóvel</th><th>Período</th><th>Status</th><th>Parecer</th><th></th></tr>
+                </thead>
+                <tbody id="tabelaPedidos"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/controllers/PedidoController.js"></script>
+</body>
+</html>
