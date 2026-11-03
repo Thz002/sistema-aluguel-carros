@@ -1,6 +1,6 @@
 # Sistema de Aluguel de Carros (Vértice Automóveis)
 
-Trabalho do Laboratório 02 da disciplina de Desenvolvimento de Interfaces Web (DIW), Engenharia de Software, PUC Minas.
+Trabalho do Laboratório 02 da disciplina de Desenvolvimento de Interfaces Web (DIW), Ciências da Computação, PUC Minas.
 
 O sistema serve para gerenciar aluguéis de carros pela internet. O cliente faz o pedido de aluguel e acompanha o andamento. Os agentes (empresas e bancos) fazem a análise financeira do pedido e, se aprovarem, executam o contrato, que pode ou não ter um crédito concedido por um banco.
 
