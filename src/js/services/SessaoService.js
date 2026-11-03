@@ -2,11 +2,12 @@ import { Api } from './Api.js';
 
 const CHAVE = 'usuarioLogado';
 
-// Sessão simulada no localStorage (protótipo: não é autenticação segura).
+// Sessão simulada no navegador (protótipo: não é autenticação segura).
+// "Lembrar de mim" usa o localStorage (persiste); sem ele, o sessionStorage (some ao fechar o navegador).
 // Formato salvo: { id, nome, tipo } com tipo = 'CLIENTE' | 'EMPRESA' | 'BANCO'.
 export const SessaoService = {
   // Procura o login/senha entre clientes e agentes. Retorna o usuário ou null.
-  async autenticar(login, senha) {
+  async autenticar(login, senha, lembrar = true) {
     const [clientes, agentes] = await Promise.all([
       Api.listar('clientes', { login, senha }),
       Api.listar('agentes', { login, senha }),
@@ -16,20 +17,26 @@ export const SessaoService = {
     if (clientes.length) usuario = { id: clientes[0].id, nome: clientes[0].nome, tipo: 'CLIENTE' };
     else if (agentes.length) usuario = { id: agentes[0].id, nome: agentes[0].nome, tipo: agentes[0].tipo };
 
-    if (usuario) this.salvar(usuario);
+    if (usuario) {
+      this.encerrar();
+      this.salvar(usuario, lembrar);
+    }
     return usuario;
   },
 
-  salvar(usuario) {
-    localStorage.setItem(CHAVE, JSON.stringify(usuario));
+  // Sem o parâmetro "lembrar", mantém a sessão no mesmo armazenamento em que já está.
+  salvar(usuario, lembrar = localStorage.getItem(CHAVE) !== null) {
+    const armazenamento = lembrar ? localStorage : sessionStorage;
+    armazenamento.setItem(CHAVE, JSON.stringify(usuario));
   },
 
   obter() {
-    return JSON.parse(localStorage.getItem(CHAVE));
+    return JSON.parse(localStorage.getItem(CHAVE) ?? sessionStorage.getItem(CHAVE));
   },
 
   encerrar() {
     localStorage.removeItem(CHAVE);
+    sessionStorage.removeItem(CHAVE);
   },
 
   ehAgente(usuario) {

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | Vértice Automóveis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+  <main class="login-page">
+    <section class="brand-panel" aria-label="Universo Vértice">
+      <div class="brand-panel__overlay"></div>
+
+      <a class="brand" href="login.html" aria-label="Vértice Automóveis">
+        <svg class="brand__symbol" viewBox="0 0 40 36" aria-hidden="true">
+          <path d="M2 2 L20 34 L38 2" />
+          <path d="M11 2 L20 18 L29 2" />
+        </svg>
+        <span class="brand__signature">
+          <span class="brand__name">VÉRTICE</span>
+          <span class="brand__category">AUTOMÓVEIS</span>
+        </span>
+      </a>
+
+      <div class="brand-message">
+        <div class="brand-message__copy">
+          <p class="eyebrow eyebrow--light"><span aria-hidden="true"></span>EXCELÊNCIA EM CADA ESCOLHA</p>
+          <h1>Seu próximo capítulo.<br>Na direção certa.</h1>
+          <p class="brand-message__description">
+            Uma seleção excepcional de automóveis. Um compromisso permanente com a sua confiança.
+          </p>
+        </div>
+        <div class="brand-credentials">
+          <p>Curadoria rigorosa. Atendimento próximo.</p>
+          <p class="brand-credentials__seal"><i class="bi bi-shield-check"></i> Procedência garantida</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="access-panel" aria-label="Acesso à conta">
+      <div></div>
+
+      <div class="login">
+        <header class="login__heading">
+          <p class="eyebrow">ÁREA DE ACESSO</p>
+          <h2>Bem-vindo à Vértice.</h2>
+          <p>Acesse sua conta para acompanhar seus pedidos de aluguel e encontrar seu próximo automóvel.</p>
+        </header>
+
+        <form id="formLogin" class="login-form" novalidate>
+          <div class="field">
+            <label for="login">Login</label>
+            <input id="login" name="login" type="text" placeholder="Seu login" autocomplete="username" required>
+          </div>
+
+          <div class="field">
+            <label for="senha">Senha</label>
+            <div class="password-input">
+              <input id="senha" name="senha" type="password" placeholder="Digite sua senha" autocomplete="current-password" required>
+              <button type="button" id="btnMostrarSenha" class="password-input__toggle" aria-label="Mostrar senha" aria-pressed="false">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="login-options">
+            <label class="remember">
+              <input type="checkbox" id="lembrar" checked>
+              <span class="remember__box" aria-hidden="true"><i class="bi bi-check"></i></span>
+              Lembrar de mim
+            </label>
+          </div>
+
+          <button class="submit-button" type="submit">
+            <span>Entrar na minha conta</span>
+            <i class="bi bi-arrow-right"></i>
+          </button>
+
+          <p id="mensagemLogin" class="security-note" aria-live="polite">
+            <i class="bi bi-lock"></i> <span>Seus dados protegidos, em cada etapa.</span>
+          </p>
+        </form>
+
+        <div class="signup">
+          <p>Ainda não tem uma conta? <a href="clientes.html">Cadastre-se</a></p>
+        </div>
+      </div>
+
+      <footer class="access-footer">
+        <p>© 2026 Vértice Automóveis</p>
+      </footer>
+    </section>
+  </main>
+
+  <script type="module" src="js/controllers/LoginController.js"></script>
+</body>
+</html>

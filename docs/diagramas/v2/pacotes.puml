@@ -1,0 +1,59 @@
+@startuml pacotes
+title Sistema de Aluguel de Carros - Diagrama de Pacotes / Visão Lógica (v2)
+skinparam packageStyle rectangle
+
+package "Construção dinâmica das páginas web" as SubsistemaWeb {
+  package "páginas (HTML + Bootstrap)" as paginas {
+    [index.html]
+    [clientes.html]
+    [automoveis.html]
+    [pedidos.html]
+    [avaliacao.html]
+    [login.html]
+  }
+  package views {
+    [componentes]
+    [ClienteView]
+    [AutomovelView]
+    [PedidoView]
+    [AvaliacaoView]
+  }
+}
+
+package "Gestão de pedidos e contratos" as SubsistemaGestao {
+  package controllers {
+    [pagina]
+    [LoginController]
+    [HomeController]
+    [ClienteController]
+    [AutomovelController]
+    [PedidoController]
+    [AvaliacaoController]
+  }
+  package services {
+    [Api]
+    [BaseService]
+    [ClienteService]
+    [AgenteService]
+    [AutomovelService]
+    [PedidoService]
+    [ContratoService]
+    [SessaoService]
+  }
+  package models {
+    [Usuario]
+    [Cliente]
+    [Agente]
+    [Automovel]
+    [Pedido]
+    [Contrato]
+  }
+}
+
+paginas ..> controllers : <<import>>
+controllers ..> views : <<use>>
+controllers ..> services : <<use>>
+controllers ..> models : <<use>>
+views ..> models : <<use>>
+services ..> models : <<use>>
+@enduml

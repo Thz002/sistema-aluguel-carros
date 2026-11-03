@@ -1,11 +1,11 @@
-# Histórias de Usuário (v1)
+# Histórias de Usuário (v2)
 
 Formato: **Como** \<ator\>, **quero** \<ação\>, **para** \<benefício\>.
 
 | ID | História | Critérios de aceitação | Caso de uso |
 |----|----------|------------------------|-------------|
 | US01 | Como **cliente**, quero me cadastrar no sistema, para poder fazer pedidos de aluguel. | Informar nome, RG, CPF, endereço, profissão, login, senha e até 3 empregadores com rendimentos. O login deve ser único. | UC01 |
-| US02 | Como **usuário**, quero entrar com login e senha, para acessar as funções do meu perfil. | Cliente vai para "Meus pedidos"; agente vai para "Avaliar pedidos". Páginas protegidas redirecionam para o login. | UC02 |
+| US02 | Como **usuário**, quero entrar com login e senha, para acessar as funções do meu perfil. | Após entrar, cliente e agente veem atalhos do seu perfil. Opção "Lembrar de mim" mantém a sessão ao fechar o navegador. Login inválido exibe mensagem de erro. Páginas protegidas redirecionam para o login; o link "Cadastre-se" leva ao cadastro. | UC02 |
 | US03 | Como **cliente**, quero atualizar meus dados e rendimentos, para manter minha análise financeira correta. | Não é permitido informar mais de 3 rendimentos. | UC03 |
 | US04 | Como **cliente**, quero introduzir um pedido de aluguel escolhendo o automóvel e o período, para alugar um carro. | Pedido nasce com status PENDENTE. A data de fim não pode ser anterior à de início. | UC04 |
 | US05 | Como **cliente**, quero modificar um pedido, para corrigir o automóvel ou as datas. | Só é possível enquanto o pedido estiver PENDENTE. | UC05 |

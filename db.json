@@ -10,8 +10,14 @@
       "endereco": "Rua da Bahia, 100 - Belo Horizonte/MG",
       "profissao": "Analista de Sistemas",
       "empregos": [
-        { "entidade": "Tech BH Ltda", "rendimento": 6500 },
-        { "entidade": "Freelancer", "rendimento": 1500 }
+        {
+          "entidade": "Tech BH Ltda",
+          "rendimento": 6500
+        },
+        {
+          "entidade": "Freelancer",
+          "rendimento": 1500
+        }
       ]
     },
     {
@@ -24,22 +30,97 @@
       "endereco": "Av. Afonso Pena, 2000 - Belo Horizonte/MG",
       "profissao": "Professor",
       "empregos": [
-        { "entidade": "Escola Estadual Central", "rendimento": 4200 }
+        {
+          "entidade": "Escola Estadual Central",
+          "rendimento": 4200
+        }
       ]
+    },
+    {
+      "login": "Thiago",
+      "senha": "1234",
+      "nome": "duartethiago017@gmail.com",
+      "rg": "199.454.453-78",
+      "cpf": "199.454.453.78",
+      "endereco": "Rua Francisco Dias",
+      "profissao": "Engenheiro Biomédico",
+      "empregos": [],
+      "id": 3
     }
   ],
   "agentes": [
-    { "id": 1, "login": "locadora", "senha": "123", "nome": "Locadora Rápida", "cnpj": "11.111.111/0001-11", "tipo": "EMPRESA" },
-    { "id": 2, "login": "banco", "senha": "123", "nome": "Banco Minas", "cnpj": "22.222.222/0001-22", "tipo": "BANCO" }
+    {
+      "id": 1,
+      "login": "locadora",
+      "senha": "123",
+      "nome": "Locadora Rápida",
+      "cnpj": "11.111.111/0001-11",
+      "tipo": "EMPRESA"
+    },
+    {
+      "id": 2,
+      "login": "banco",
+      "senha": "123",
+      "nome": "Banco Minas",
+      "cnpj": "22.222.222/0001-22",
+      "tipo": "BANCO"
+    }
   ],
   "automoveis": [
-    { "id": 1, "matricula": "MAT-0001", "ano": 2022, "marca": "Fiat", "modelo": "Argo", "placa": "ABC1D23", "proprietarioTipo": "AGENTE", "proprietarioId": 1 },
-    { "id": 2, "matricula": "MAT-0002", "ano": 2023, "marca": "Volkswagen", "modelo": "Polo", "placa": "DEF4G56", "proprietarioTipo": "AGENTE", "proprietarioId": 1 },
-    { "id": 3, "matricula": "MAT-0003", "ano": 2021, "marca": "Chevrolet", "modelo": "Onix", "placa": "HIJ7K89", "proprietarioTipo": "AGENTE", "proprietarioId": 1 }
+    {
+      "id": 1,
+      "matricula": "MAT-0001",
+      "ano": 2022,
+      "marca": "Fiat",
+      "modelo": "Argo",
+      "placa": "ABC1D23",
+      "proprietarioTipo": "AGENTE",
+      "proprietarioId": 1
+    },
+    {
+      "id": 2,
+      "matricula": "MAT-0002",
+      "ano": 2023,
+      "marca": "Volkswagen",
+      "modelo": "Polo",
+      "placa": "DEF4G56",
+      "proprietarioTipo": "AGENTE",
+      "proprietarioId": 1
+    },
+    {
+      "id": 3,
+      "matricula": "MAT-0003",
+      "ano": 2021,
+      "marca": "Chevrolet",
+      "modelo": "Onix",
+      "placa": "HIJ7K89",
+      "proprietarioTipo": "AGENTE",
+      "proprietarioId": 1
+    }
   ],
   "pedidos": [
-    { "id": 1, "clienteId": 1, "automovelId": 1, "dataInicio": "2026-11-10", "dataFim": "2026-11-20", "status": "PENDENTE", "parecer": "", "agenteId": null, "dataCriacao": "2026-11-03" },
-    { "id": 2, "clienteId": 2, "automovelId": 2, "dataInicio": "2026-12-01", "dataFim": "2026-12-15", "status": "APROVADO", "parecer": "Renda compatível com o valor do aluguel.", "agenteId": 2, "dataCriacao": "2026-11-01" }
+    {
+      "id": 1,
+      "clienteId": 1,
+      "automovelId": 1,
+      "dataInicio": "2026-11-10",
+      "dataFim": "2026-11-20",
+      "status": "PENDENTE",
+      "parecer": "",
+      "agenteId": null,
+      "dataCriacao": "2026-11-03"
+    },
+    {
+      "id": 2,
+      "clienteId": 2,
+      "automovelId": 2,
+      "dataInicio": "2026-12-01",
+      "dataFim": "2026-12-15",
+      "status": "APROVADO",
+      "parecer": "Renda compatível com o valor do aluguel.",
+      "agenteId": 2,
+      "dataCriacao": "2026-11-01"
+    }
   ],
   "contratos": []
 }

@@ -1,4 +1,4 @@
-# 🚗 Sistema de Aluguel de Carros (AlugaCar) 👨‍💻
+# 🚗 Vértice Automóveis – Sistema de Aluguel de Carros 👨‍💻
 
 > [!NOTE]
 > Sistema web para gestão de aluguéis de automóveis: clientes fazem, modificam, consultam e cancelam pedidos; agentes (empresas e bancos) avaliam financeiramente os pedidos e executam os contratos, com ou sem crédito bancário.
@@ -57,7 +57,7 @@ Contexto: projeto acadêmico (DIW – PUC Minas, 2º período).
 
 ## ✨ Funcionalidades Principais
 
-- 🔐 **Cadastro e login** de clientes e agentes (sessão simulada no `localStorage`).
+- 🔐 **Cadastro e login** de clientes e agentes, com opção "Lembrar de mim" (sessão simulada no `localStorage`/`sessionStorage`). A tela de login foi prototipada no Figma e convertida para HTML/CSS/JS puro.
 - 👤 **CRUD de clientes** com até 3 empregadores/rendimentos e cálculo da renda total.
 - 🚘 **CRUD de automóveis** (agentes).
 - 📝 **Pedidos de aluguel**: o cliente cria, modifica, consulta o status e cancela.
@@ -94,23 +94,24 @@ A aplicação é um front-end em JavaScript puro organizado em camadas, inspirad
 - **controllers:** um por página; tratam eventos, chamam os serviços e repassam os dados às views.
 - **views:** geram o HTML dinâmico (com escape de texto para evitar injeção de HTML).
 
-**Trade-offs:** a autenticação é apenas simulada (senha em texto no `db.json` e sessão no `localStorage`), adequada a um protótipo acadêmico, mas não a produção.
+**Trade-offs:** a autenticação é apenas simulada (senha em texto no `db.json` e sessão no `localStorage`/`sessionStorage`), adequada a um protótipo acadêmico, mas não a produção.
 
 ### Diagramas
 
-Os diagramas foram feitos em **PlantUML** e ficam versionados em [`docs/diagramas`](./docs/diagramas). As histórias de usuário estão em [`docs/historias-usuario.md`](./docs/historias-usuario.md).
+Os diagramas foram feitos em **PlantUML** e ficam versionados em [`docs/diagramas`](./docs/diagramas) (uma pasta por versão). Abaixo, a versão mais recente (v2). As histórias de usuário estão em [`docs/historias-usuario.md`](./docs/historias-usuario.md).
 
 | Casos de Uso | Classes |
 | :---: | :---: |
-| <img src="docs/diagramas/v1/casos-de-uso.png" alt="Diagrama de Casos de Uso" width="400px"> | <img src="docs/diagramas/v1/classes.png" alt="Diagrama de Classes" width="400px"> |
+| <img src="docs/diagramas/v2/casos-de-uso.png" alt="Diagrama de Casos de Uso" width="400px"> | <img src="docs/diagramas/v2/classes.png" alt="Diagrama de Classes" width="400px"> |
 | **Pacotes (Visão Lógica)** | **Componentes** |
-| <img src="docs/diagramas/v1/pacotes.png" alt="Diagrama de Pacotes" width="400px"> | <img src="docs/diagramas/v1/componentes.png" alt="Diagrama de Componentes" width="400px"> |
+| <img src="docs/diagramas/v2/pacotes.png" alt="Diagrama de Pacotes" width="400px"> | <img src="docs/diagramas/v2/componentes.png" alt="Diagrama de Componentes" width="400px"> |
 
 ### Histórico de versões dos modelos
 
 | Versão | Data | Alterações |
 |---|---|---|
 | v1 | 03/11/2026 | Versão inicial: casos de uso, histórias de usuário, classes, pacotes e componentes. |
+| v2 | 03/11/2026 | Integração da tela de login: `LoginController` no diagrama de pacotes; tela de login e Web Storage (`localStorage`/`sessionStorage`) no diagrama de componentes; extensão "Autenticar → Cadastrar-se" e opção "Lembrar de mim" no diagrama de casos de uso. Diagrama de classes sem alterações. |
 
 ---
 
@@ -132,7 +133,7 @@ npm install
 npm start
 ```
 
-O JSON Server sobe em `http://localhost:3000` servindo **a API** (`/clientes`, `/agentes`, `/automoveis`, `/pedidos`, `/contratos`) e **as páginas** da pasta `src`. Acesse `http://localhost:3000/login.html`.
+O JSON Server sobe em `http://localhost:3000` servindo **a API** (`/clientes`, `/agentes`, `/automoveis`, `/pedidos`, `/contratos`) e **as páginas** da pasta `src`. Acesse `http://localhost:3000` (sem sessão, o sistema abre a tela de login).
 
 > [!IMPORTANT]
 > As páginas usam ES Modules, por isso precisam ser abertas via servidor (`npm start`) e não com duplo clique no arquivo HTML.
@@ -158,7 +159,8 @@ O JSON Server sobe em `http://localhost:3000` servindo **a API** (`/clientes`, `
 ├── docs/
 │   ├── historias-usuario.md   # 📝 Histórias de usuário
 │   └── diagramas/
-│       └── v1/                # 📐 Casos de uso, classes, pacotes e componentes (.puml/.png)
+│       ├── v1/                # 📐 Versão inicial dos diagramas (.puml/.png)
+│       └── v2/                # 📐 Diagramas revisados após a integração do login
 └── src/
     ├── index.html             # 🏠 Início (atalhos por perfil)
     ├── login.html             # 🔐 Login
@@ -166,7 +168,10 @@ O JSON Server sobe em `http://localhost:3000` servindo **a API** (`/clientes`, `
     ├── automoveis.html        # 🚘 CRUD de automóveis (agentes)
     ├── pedidos.html           # 📝 Pedidos do cliente
     ├── avaliacao.html         # 📊 Avaliação de pedidos e contratos (agentes)
-    ├── css/style.css
+    ├── css/
+    │   ├── style.css          # 🎨 Identidade visual (Bootstrap customizado)
+    │   └── login.css          # 🎨 Estilos da tela de login
+    ├── img/                   # 🖼️ Imagens (foto da tela de login)
     └── js/
         ├── models/            # Entidades e regras de negócio
         ├── services/          # Acesso à API (Fetch) e sessão

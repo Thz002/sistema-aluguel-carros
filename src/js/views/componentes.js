@@ -71,9 +71,12 @@ export function renderizarNavbar(usuario, aoSair) {
     : '';
 
   document.getElementById('navbar').innerHTML = `
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-vertice mb-4">
       <div class="container">
-        <a class="navbar-brand" href="index.html"><i class="bi bi-car-front-fill"></i> AlugaCar</a>
+        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+          <svg class="marca-simbolo" viewBox="0 0 40 36" aria-hidden="true"><path d="M2 2 L20 34 L38 2" /><path d="M11 2 L20 18 L29 2" /></svg>
+          <span class="marca-nome">VÉRTICE</span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
           <span class="navbar-toggler-icon"></span>
         </button>

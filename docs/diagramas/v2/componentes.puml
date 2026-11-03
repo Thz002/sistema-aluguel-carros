@@ -1,0 +1,36 @@
+@startuml componentes
+title Sistema de Aluguel de Carros - Diagrama de Componentes (v2)
+skinparam componentStyle uml2
+
+node "Computador do cliente / agente" {
+  component "Navegador" as Navegador {
+    component "Tela de login\n(login.html + login.css)" as Login
+    component "Páginas HTML\n(Bootstrap 5)" as Paginas
+    component "Views\n(construção dinâmica)" as Views
+    component "Controllers" as Controllers
+    component "Services" as Services
+    component "Models" as Models
+    component "SessaoService" as Sessao
+    database "Web Storage\n(localStorage /\nsessionStorage)" as Storage
+  }
+}
+
+node "Servidor central (localhost:3000)" {
+  component "JSON Server\n(API REST)" as JsonServer
+  database "db.json" as Db
+  interface "REST /clientes\n/agentes /automoveis\n/pedidos /contratos" as Rest
+}
+
+Login --> Controllers : LoginController
+Paginas --> Controllers
+Controllers --> Views
+Controllers --> Services
+Controllers --> Sessao
+Sessao --> Storage : guarda a sessão
+Sessao --> Services : autenticar()
+Services --> Models
+Services --( Rest : Fetch API (HTTP/JSON)
+Rest - JsonServer
+JsonServer --> Db : lê / grava
+JsonServer ..> Paginas : serve arquivos estáticos (--static ./src)
+@enduml
