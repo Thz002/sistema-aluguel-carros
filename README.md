@@ -181,12 +181,7 @@ Escolha de Automóveis
 - [JSON Server](https://github.com/typicode/json-server/tree/v0)
 - [Fetch API (MDN)](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API)
 - [PlantUML](https://plantuml.com/pt/)
-- [Repositório da disciplina](https://github.com/joaopauloaramuni/desenvolvimento-de-interfaces-web)
-
+- 
 ## Autor
 
 Thiago Duarte - [github.com/Thz002](https://github.com/Thz002)
-
-## Licença
-
-MIT
