@@ -1,222 +1,186 @@
-# 🚗 Vértice Automóveis – Sistema de Aluguel de Carros 👨‍💻
+# Sistema de Aluguel de Carros (Vértice Automóveis)
 
-> [!NOTE]
-> Sistema web para gestão de aluguéis de automóveis: clientes fazem, modificam, consultam e cancelam pedidos; agentes (empresas e bancos) avaliam financeiramente os pedidos e executam os contratos, com ou sem crédito bancário.
+Trabalho do Laboratório 02 da disciplina de Desenvolvimento de Interfaces Web (DIW), Engenharia de Software, PUC Minas.
 
-<table>
-  <tr>
-    <td width="800px">
-      <div align="justify">
-        Projeto desenvolvido no <b>Laboratório 02</b> da disciplina <b>Desenvolvimento de Interfaces Web (DIW)</b> do curso de Engenharia de Software da PUC Minas. O sistema permite efetuar, cancelar e modificar pedidos de aluguel pela Internet, com <i>cadastro prévio obrigatório</i>, <i>análise financeira</i> feita pelos agentes e <i>execução de contratos</i>, que podem estar associados a um contrato de crédito concedido por um banco. Foi construído com <b>HTML5, CSS3, JavaScript</b>, <b>Bootstrap 5</b> e <b>JSON Server</b> como API REST simulada.
-      </div>
-    </td>
-    <td>
-      <div>
-        <img src="https://joaopauloaramuni.github.io/image/cc-puc.jpg" alt="Logo do Projeto" width="120px"/>
-      </div>
-    </td>
-  </tr>
-</table>
+O sistema serve para gerenciar aluguéis de carros pela internet. O cliente faz o pedido de aluguel e acompanha o andamento. Os agentes (empresas e bancos) fazem a análise financeira do pedido e, se aprovarem, executam o contrato, que pode ou não ter um crédito concedido por um banco.
 
----
+<imagem da tela de login aqui>
 
-## 🚧 Status do Projeto
+## Sumário
 
-![Versão](https://img.shields.io/badge/Versão-v1.0.0-blue?style=for-the-badge) ![HTML5](https://img.shields.io/badge/HTML5-007ec6?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-007ec6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-007ec6?style=for-the-badge&logo=javascript&logoColor=white) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.3-007ec6?style=for-the-badge&logo=bootstrap&logoColor=white) ![JSON Server](https://img.shields.io/badge/JSON_Server-0.17.4-007ec6?style=for-the-badge&logo=json&logoColor=white)
+- [Sobre o projeto](#sobre-o-projeto)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias](#tecnologias)
+- [Arquitetura](#arquitetura)
+- [Diagramas](#diagramas)
+- [Como executar](#como-executar)
+- [Estrutura de pastas](#estrutura-de-pastas)
+- [Telas](#telas)
+- [Referências](#referências)
+- [Autor](#autor)
+- [Licença](#licença)
 
----
+## Sobre o projeto
 
-## 📚 Índice
-- [Sobre o Projeto](#-sobre-o-projeto)
-- [Funcionalidades Principais](#-funcionalidades-principais)
-- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [Arquitetura](#-arquitetura)
-  - [Diagramas](#diagramas)
-  - [Histórico de versões dos modelos](#histórico-de-versões-dos-modelos)
-- [Instalação e Execução](#-instalação-e-execução)
-- [Estrutura de Pastas](#-estrutura-de-pastas)
-- [Demonstração](#-demonstração)
-- [Documentações utilizadas](#-documentações-utilizadas)
-- [Autores](#-autores)
-- [Licença](#-licença)
+Requisitos principais do enunciado:
 
----
+- O sistema só pode ser usado depois de um cadastro.
+- Clientes podem criar, modificar, consultar e cancelar pedidos de aluguel.
+- Agentes (empresas e bancos) podem modificar e avaliar pedidos. Pedidos com parecer positivo seguem para a execução do contrato.
+- Do cliente são guardados RG, CPF, nome, endereço, profissão e até 3 empregadores com os respectivos rendimentos.
+- Do automóvel são guardados matrícula, ano, marca, modelo e placa. Dependendo do contrato, o carro fica registrado como propriedade do cliente, de uma empresa ou de um banco.
+- O aluguel pode estar ligado a um contrato de crédito de um dos bancos.
 
-## 📝 Sobre o Projeto
+## Funcionalidades
 
-O sistema apoia a gestão de aluguéis de automóveis e só pode ser utilizado após cadastro prévio.
+- Login de clientes e agentes, com opção "Lembrar de mim"
+- Cadastro de clientes (CRUD completo para os agentes; o cliente edita os próprios dados)
+- Cadastro de automóveis (agentes)
+- Pedidos de aluguel: o cliente cria, altera, cancela e acompanha o status
+- Avaliação financeira: o agente vê a renda do cliente e aprova ou reprova com um parecer
+- Execução do contrato, simples ou com crédito (banco, valor e parcelas)
 
-- **Clientes** (usuários individuais) introduzem, modificam, consultam e cancelam pedidos de aluguel. Sobre eles são armazenados RG, CPF, nome, endereço, profissão e até **3** entidades empregadoras com os respectivos rendimentos.
-- **Agentes** (empresas e bancos) modificam e avaliam os pedidos. Após a análise financeira, os pedidos com parecer positivo ficam disponíveis para a execução do contrato.
-- **Automóveis** são registrados com matrícula, ano, marca, modelo e placa. Dependendo do contrato, o automóvel é registrado como propriedade do cliente, de uma empresa ou de um banco.
-- O aluguel pode estar associado a um **contrato de crédito** concedido por um dos bancos agentes.
+Status possíveis de um pedido:
 
-Contexto: projeto acadêmico (DIW – PUC Minas, 2º período).
+```
+PENDENTE -> APROVADO -> CONTRATADO
+PENDENTE -> REPROVADO
+PENDENTE ou APROVADO -> CANCELADO (pelo cliente)
+```
 
----
+## Tecnologias
 
-## ✨ Funcionalidades Principais
+- HTML5, CSS3 e JavaScript (módulos ES6)
+- Bootstrap 5.3 e Bootstrap Icons
+- JSON Server 0.17.4 como API REST, com os dados no `db.json`
+- Fetch API para as requisições
+- PlantUML para os diagramas
 
-- 🔐 **Cadastro e login** de clientes e agentes, com opção "Lembrar de mim" (sessão simulada no `localStorage`/`sessionStorage`). A tela de login foi prototipada no Figma e convertida para HTML/CSS/JS puro.
-- 👤 **CRUD de clientes** com até 3 empregadores/rendimentos e cálculo da renda total.
-- 🚘 **CRUD de automóveis** (agentes).
-- 📝 **Pedidos de aluguel**: o cliente cria, modifica, consulta o status e cancela.
-- 📊 **Avaliação financeira**: o agente vê a renda do cliente e aprova ou reprova com parecer.
-- 📄 **Execução de contratos** simples ou com **contrato de crédito** (banco, valor e parcelas), registrando o proprietário do automóvel.
+## Arquitetura
 
-**Ciclo de vida do pedido:** `PENDENTE → APROVADO | REPROVADO → CONTRATADO`, com `CANCELADO` disponível ao cliente enquanto o pedido estiver pendente ou aprovado.
+O front-end foi dividido em camadas, seguindo a ideia do MVC:
 
----
+- `models`: classes do domínio e regras de negócio (`Cliente`, `Agente`, `Automovel`, `Pedido`, `Contrato` etc.). As mudanças de status do pedido ficam na classe `Pedido`.
+- `services`: comunicação com o JSON Server via Fetch. Tem um CRUD genérico (`BaseService`) e um service para cada recurso, além do `SessaoService`, que cuida do login.
+- `controllers`: um por página. Recebem os eventos da tela e chamam os services.
+- `views`: montam o HTML das tabelas, formulários, navbar e alertas.
 
-## 🛠 Tecnologias Utilizadas
+O enunciado divide o sistema em dois subsistemas. No código, `models`, `services` e `controllers` formam a gestão de pedidos e contratos, e as páginas HTML junto com `views` formam a construção dinâmica das páginas.
 
-### 💻 Front-end
-* **Estrutura e lógica:** HTML5, CSS3 e JavaScript (ES Modules)
-* **Interface:** Bootstrap 5.3.3 e Bootstrap Icons 1.11.3 (via CDN)
-* **Comunicação:** Fetch API
+O login é só uma simulação: a senha fica em texto no `db.json` e a sessão no `localStorage` (ou no `sessionStorage`, quando "Lembrar de mim" está desmarcado). Para um protótipo da disciplina isso atende, mas não seria seguro em produção.
 
-### 🖥️ Back-end
-* **API e persistência:** JSON Server 0.17.4 (API REST simulada a partir do `db.json`)
+## Diagramas
 
----
+Os arquivos `.puml` estão em `docs/diagramas`, separados por versão. As histórias de usuário estão em `docs/historias-usuario.md`.
 
-## 🏗 Arquitetura
+| Versão | O que mudou |
+|---|---|
+| v1 | Versão inicial: casos de uso, classes, pacotes e componentes. |
+| v2 | Entrada da tela de login: `LoginController` no diagrama de pacotes, tela de login e armazenamento da sessão no diagrama de componentes, ligação entre "Autenticar" e "Cadastrar-se" no diagrama de casos de uso. O diagrama de classes não mudou. |
 
-A aplicação é um front-end em JavaScript puro organizado em camadas, inspirado no padrão **MVC**, que consome a API REST do JSON Server. Os pacotes correspondem aos dois subsistemas descritos no enunciado:
+Diagramas atuais (v2):
 
-| Subsistema | Pacotes | Responsabilidade |
-|---|---|---|
-| **Gestão de pedidos e contratos** | `models`, `services`, `controllers` | Entidades e regras de negócio (`models`), acesso à API REST via Fetch (`services`) e coordenação de cada página (`controllers`). |
-| **Construção dinâmica das páginas web** | páginas HTML, `views` | Páginas com Bootstrap e funções que montam tabelas, formulários, navbar e alertas dinamicamente (`views`). |
+Casos de uso
 
-- **models:** `Usuario`, `Cliente`/`Emprego`, `Agente`/`Empresa`/`Banco`, `Automovel`, `Pedido`, `Contrato`/`ContratoCredito`. As regras de transição de status ficam em `Pedido` (ex.: `avaliar()`, `cancelar()`, `marcarComoContratado()`).
-- **services:** `Api` (Fetch genérico), `BaseService` (CRUD genérico que converte JSON em instâncias dos modelos) e um serviço por recurso. `ContratoService.executar()` grava o contrato, marca o pedido como `CONTRATADO` e atualiza o proprietário do automóvel.
-- **controllers:** um por página; tratam eventos, chamam os serviços e repassam os dados às views.
-- **views:** geram o HTML dinâmico (com escape de texto para evitar injeção de HTML).
+<imagem do diagrama de casos de uso aqui>
 
-**Trade-offs:** a autenticação é apenas simulada (senha em texto no `db.json` e sessão no `localStorage`/`sessionStorage`), adequada a um protótipo acadêmico, mas não a produção.
+Classes
 
-### Diagramas
+<imagem do diagrama de classes aqui>
 
-Os diagramas foram feitos em **PlantUML** e ficam versionados em [`docs/diagramas`](./docs/diagramas) (uma pasta por versão). Abaixo, a versão mais recente (v2). As histórias de usuário estão em [`docs/historias-usuario.md`](./docs/historias-usuario.md).
+Pacotes
 
-| Casos de Uso | Classes |
-| :---: | :---: |
-| <img src="docs/diagramas/v2/casos-de-uso.png" alt="Diagrama de Casos de Uso" width="400px"> | <img src="docs/diagramas/v2/classes.png" alt="Diagrama de Classes" width="400px"> |
-| **Pacotes (Visão Lógica)** | **Componentes** |
-| <img src="docs/diagramas/v2/pacotes.png" alt="Diagrama de Pacotes" width="400px"> | <img src="docs/diagramas/v2/componentes.png" alt="Diagrama de Componentes" width="400px"> |
+<imagem do diagrama de pacotes aqui>
 
-### Histórico de versões dos modelos
+Componentes
 
-| Versão | Data | Alterações |
-|---|---|---|
-| v1 | 03/11/2026 | Versão inicial: casos de uso, histórias de usuário, classes, pacotes e componentes. |
-| v2 | 03/11/2026 | Integração da tela de login: `LoginController` no diagrama de pacotes; tela de login e Web Storage (`localStorage`/`sessionStorage`) no diagrama de componentes; extensão "Autenticar → Cadastrar-se" e opção "Lembrar de mim" no diagrama de casos de uso. Diagrama de classes sem alterações. |
+<imagem do diagrama de componentes aqui>
 
----
+## Como executar
 
-## 🔧 Instalação e Execução
-
-### Pré-requisitos
-* **Node.js** versão LTS (v18 ou superior)
-* **npm**
-
-### 📦 Instalação de Dependências
+Pré-requisito: Node.js 18 ou superior.
 
 ```bash
 npm install
-```
-
-### ⚡ Como Executar a Aplicação
-
-```bash
 npm start
 ```
 
-O JSON Server sobe em `http://localhost:3000` servindo **a API** (`/clientes`, `/agentes`, `/automoveis`, `/pedidos`, `/contratos`) e **as páginas** da pasta `src`. Acesse `http://localhost:3000` (sem sessão, o sistema abre a tela de login).
+Depois é só abrir `http://localhost:3000`. O JSON Server entrega a API e as páginas da pasta `src` na mesma porta. Como as páginas usam módulos JavaScript, elas não funcionam abrindo o arquivo HTML direto no navegador.
 
-> [!IMPORTANT]
-> As páginas usam ES Modules, por isso precisam ser abertas via servidor (`npm start`) e não com duplo clique no arquivo HTML.
+Usuários para teste (senha `123` para todos):
 
-### 👥 Usuários de teste
+| Perfil | Login |
+|---|---|
+| Cliente | `maria` |
+| Cliente | `joao` |
+| Empresa | `locadora` |
+| Banco | `banco` |
 
-| Perfil | Login | Senha |
-|---|---|---|
-| Cliente | `maria` | `123` |
-| Cliente | `joao` | `123` |
-| Agente (Empresa) | `locadora` | `123` |
-| Agente (Banco) | `banco` | `123` |
-
----
-
-## 📂 Estrutura de Pastas
+## Estrutura de pastas
 
 ```
 .
-├── db.json                    # 💾 Base de dados do JSON Server
-├── package.json               # 📦 Dependências e script "npm start"
-├── README.md
+├── db.json                 dados do JSON Server
+├── package.json
 ├── docs/
-│   ├── historias-usuario.md   # 📝 Histórias de usuário
+│   ├── historias-usuario.md
 │   └── diagramas/
-│       ├── v1/                # 📐 Versão inicial dos diagramas (.puml/.png)
-│       └── v2/                # 📐 Diagramas revisados após a integração do login
+│       ├── v1/
+│       └── v2/
 └── src/
-    ├── index.html             # 🏠 Início (atalhos por perfil)
-    ├── login.html             # 🔐 Login
-    ├── clientes.html          # 👤 Cadastro / CRUD de clientes
-    ├── automoveis.html        # 🚘 CRUD de automóveis (agentes)
-    ├── pedidos.html           # 📝 Pedidos do cliente
-    ├── avaliacao.html         # 📊 Avaliação de pedidos e contratos (agentes)
+    ├── login.html
+    ├── index.html          início, com atalhos por perfil
+    ├── clientes.html       cadastro e CRUD de clientes
+    ├── automoveis.html     CRUD de automóveis
+    ├── pedidos.html        pedidos do cliente
+    ├── avaliacao.html      avaliação de pedidos e contratos
     ├── css/
-    │   ├── style.css          # 🎨 Identidade visual (Bootstrap customizado)
-    │   └── login.css          # 🎨 Estilos da tela de login
-    ├── img/                   # 🖼️ Imagens (foto da tela de login)
+    ├── img/
     └── js/
-        ├── models/            # Entidades e regras de negócio
-        ├── services/          # Acesso à API (Fetch) e sessão
-        ├── controllers/       # Lógica de cada página
-        └── views/             # Construção dinâmica do HTML
+        ├── models/
+        ├── services/
+        ├── controllers/
+        └── views/
 ```
 
----
+## Telas
 
-## 🎥 Demonstração
+Login
 
-| Tela | Captura de Tela |
-| :---: | :---: |
-| **Login** | **Meus pedidos (cliente)** |
-| _captura aqui_ | _captura aqui_ |
-| **Avaliação de pedidos (agente)** | **Cadastro de clientes** |
-| _captura aqui_ | _captura aqui_ |
+<imagem da tela de login aqui>
 
----
+Cadastro de cliente
 
-## 🔗 Documentações utilizadas
+<imagem da tela de cadastro de cliente aqui>
 
-* 📖 [Bootstrap 5 – Documentação](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
-* 📖 [JSON Server – Repositório e documentação](https://github.com/typicode/json-server/tree/v0)
-* 📖 [Fetch API (MDN)](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API)
-* 📖 [PlantUML](https://plantuml.com/pt/)
-* 📖 [Repositório da disciplina](https://github.com/joaopauloaramuni/desenvolvimento-de-interfaces-web)
+Pedidos do cliente
 
----
+<imagem da tela de pedidos do cliente aqui>
 
-## 👥 Autores
+Avaliação de pedidos (agente)
 
-| 👤 Nome | :octocat: GitHub |
-|---------|-----------------|
-| Thiago Duarte | [Thz002](https://github.com/Thz002) |
+<imagem da tela de avaliação de pedidos aqui>
 
----
+Execução de contrato
 
-## 🙏 Agradecimentos
+<imagem do modal de execução de contrato aqui>
 
-* [**Engenharia de Software PUC Minas**](https://www.instagram.com/engsoftwarepucminas/) – pelo apoio institucional e estrutura acadêmica.
-* [**Prof. Dr. João Paulo Aramuni**](https://github.com/joaopauloaramuni) – pelos ensinamentos em Desenvolvimento de Interfaces Web.
+Automóveis
 
----
+<imagem da tela de automóveis aqui>
 
-## 📄 Licença
+## Referências
 
-Este projeto é distribuído sob a **Licença MIT**.
+- [Documentação do Bootstrap 5](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [JSON Server](https://github.com/typicode/json-server/tree/v0)
+- [Fetch API (MDN)](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API)
+- [PlantUML](https://plantuml.com/pt/)
+- [Repositório da disciplina](https://github.com/joaopauloaramuni/desenvolvimento-de-interfaces-web)
+
+## Autor
+
+Thiago Duarte - [github.com/Thz002](https://github.com/Thz002)
+
+## Licença
+
+MIT
