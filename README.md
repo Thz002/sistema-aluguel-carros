@@ -4,7 +4,6 @@ Trabalho do Laboratório 02 da disciplina de Desenvolvimento de Interfaces Web (
 
 O sistema serve para gerenciar aluguéis de carros pela internet. O cliente faz o pedido de aluguel e acompanha o andamento. Os agentes (empresas e bancos) fazem a análise financeira do pedido e, se aprovarem, executam o contrato, que pode ou não ter um crédito concedido por um banco.
 
-<imagem da tela de login aqui>
 
 ## Sumário
 
@@ -82,19 +81,22 @@ Diagramas atuais (v2):
 
 Casos de uso
 
-<imagem do diagrama de casos de uso aqui>
+<img width="757" height="901" alt="image" src="https://github.com/user-attachments/assets/9f3fc6f0-9eae-4f85-ad7d-9669712b063f" />
 
 Classes
 
-<imagem do diagrama de classes aqui>
+<img width="550" height="892" alt="image" src="https://github.com/user-attachments/assets/bb15cd1c-8563-4b52-ae2f-f44e8dd797dd" />
+
 
 Pacotes
 
-<imagem do diagrama de pacotes aqui>
+<img width="1450" height="520" alt="image" src="https://github.com/user-attachments/assets/23bc6654-4a2e-4251-bae4-e68559828d20" />
+
 
 Componentes
 
-<imagem do diagrama de componentes aqui>
+<img width="806" height="896" alt="image" src="https://github.com/user-attachments/assets/24a71db4-9b91-4fd6-9d23-e884147bef1b" />
+
 
 ## Como executar
 
@@ -147,27 +149,31 @@ Usuários para teste (senha `123` para todos):
 
 Login
 
-<imagem da tela de login aqui>
+<img width="812" height="541" alt="image" src="https://github.com/user-attachments/assets/1f9bbdab-981f-40e5-9712-2f3a6decff5b" />
 
 Cadastro de cliente
 
-<imagem da tela de cadastro de cliente aqui>
+<img width="1456" height="890" alt="image" src="https://github.com/user-attachments/assets/f619d54c-3726-491d-9bee-471b0b1a2a5d" />
+
 
 Pedidos do cliente
 
 <imagem da tela de pedidos do cliente aqui>
 
-Avaliação de pedidos (agente)
+Modificação e Exclusão de Pedido
 
-<imagem da tela de avaliação de pedidos aqui>
+<img width="952" height="872" alt="image" src="https://github.com/user-attachments/assets/02b265c0-f176-482f-9f1f-33278a54cba1" />
 
-Execução de contrato
 
-<imagem do modal de execução de contrato aqui>
+Execução do Pedido
 
-Automóveis
+<img width="1460" height="902" alt="image" src="https://github.com/user-attachments/assets/6c28f961-78e4-4cd5-902d-f96da9893351" />
 
-<imagem da tela de automóveis aqui>
+
+Escolha de Automóveis 
+
+<img width="600" height="867" alt="image" src="https://github.com/user-attachments/assets/daa7fb30-4abf-4153-a99c-467cae5cf910" />
+
 
 ## Referências
 
