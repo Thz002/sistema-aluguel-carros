@@ -85,7 +85,8 @@ Casos de uso
 
 Classes
 
-<img width="550" height="892" alt="image" src="https://github.com/user-attachments/assets/bb15cd1c-8563-4b52-ae2f-f44e8dd797dd" />
+<img width="543" height="893" alt="image" src="https://github.com/user-attachments/assets/73758e19-7d1f-40b4-a652-fcc11fe7adf8" />
+
 
 
 Pacotes
