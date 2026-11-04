@@ -35,17 +35,6 @@
           "rendimento": 4200
         }
       ]
-    },
-    {
-      "login": "Thiago",
-      "senha": "1234",
-      "nome": "duartethiago017@gmail.com",
-      "rg": "199.454.453-78",
-      "cpf": "199.454.453.78",
-      "endereco": "Rua Francisco Dias",
-      "profissao": "Engenheiro Biomédico",
-      "empregos": [],
-      "id": 3
     }
   ],
   "agentes": [
@@ -120,17 +109,6 @@
       "parecer": "Renda compatível com o valor do aluguel.",
       "agenteId": 2,
       "dataCriacao": "2026-11-01"
-    },
-    {
-      "id": 3,
-      "clienteId": 3,
-      "automovelId": 1,
-      "dataInicio": "2026-11-04",
-      "dataFim": "2028-12-12",
-      "status": "CANCELADO",
-      "parecer": "",
-      "agenteId": null,
-      "dataCriacao": "2026-11-03"
     }
   ],
   "contratos": []

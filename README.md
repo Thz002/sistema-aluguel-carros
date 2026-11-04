@@ -158,10 +158,6 @@ Cadastro de cliente
 <img width="1456" height="890" alt="image" src="https://github.com/user-attachments/assets/f619d54c-3726-491d-9bee-471b0b1a2a5d" />
 
 
-Pedidos do cliente
-
-<imagem da tela de pedidos do cliente aqui>
-
 Modificação e Exclusão de Pedido
 
 <img width="952" height="872" alt="image" src="https://github.com/user-attachments/assets/02b265c0-f176-482f-9f1f-33278a54cba1" />
