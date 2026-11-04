@@ -1,6 +1,3 @@
-// Componentes de interface compartilhados por todas as páginas.
-
-// Evita que textos digitados pelo usuário sejam interpretados como HTML.
 export function escapar(texto) {
   const div = document.createElement('div');
   div.textContent = texto ?? '';
@@ -29,7 +26,6 @@ export function badgeStatus(status) {
   return `<span class="badge text-bg-${CORES_STATUS[status] || 'light'}">${escapar(status)}</span>`;
 }
 
-// areaId permite exibir o alerta dentro de um modal aberto.
 export function mostrarAlerta(mensagem, tipo = 'success', areaId = 'alertas') {
   const area = document.getElementById(areaId);
   area.innerHTML = `
@@ -55,7 +51,6 @@ function linksPorTipo(usuario) {
   ];
 }
 
-// Monta a barra de navegação de acordo com o tipo do usuário logado.
 export function renderizarNavbar(usuario, aoSair) {
   const paginaAtual = window.location.pathname.split('/').pop();
   const links = linksPorTipo(usuario)

@@ -11,7 +11,6 @@ export const PedidoView = {
       automoveis.map((a) => `<option value="${a.id}">${escapar(a.descricao())}</option>`).join('');
   },
 
-  // Tabela de pedidos do cliente, com as ações permitidas para cada status.
   renderizarTabela(tbody, pedidos, automoveis, contratos) {
     if (!pedidos.length) {
       tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">Você ainda não fez nenhum pedido.</td></tr>';

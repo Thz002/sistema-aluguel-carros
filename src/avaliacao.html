@@ -53,7 +53,6 @@
     </section>
   </main>
 
-  <!-- Modal: modificar pedido -->
   <div class="modal fade" id="modalEditar" tabindex="-1">
     <div class="modal-dialog">
       <form id="formEditar" class="modal-content" novalidate>
@@ -87,7 +86,6 @@
     </div>
   </div>
 
-  <!-- Modal: avaliação financeira -->
   <div class="modal fade" id="modalAvaliar" tabindex="-1">
     <div class="modal-dialog">
       <form id="formAvaliar" class="modal-content" novalidate>
@@ -110,7 +108,6 @@
     </div>
   </div>
 
-  <!-- Modal: execução do contrato -->
   <div class="modal fade" id="modalContrato" tabindex="-1">
     <div class="modal-dialog">
       <form id="formContrato" class="modal-content" novalidate>
@@ -127,16 +124,15 @@
               <option value="SIMPLES">Simples</option>
               <option value="CREDITO">Com contrato de crédito</option>
             </select>
+            <div id="avisoCredito" class="form-text d-none">Somente bancos podem conceder contrato de crédito.</div>
           </div>
           <div class="mb-2">
             <label class="form-label" for="proprietarioContrato">Automóvel registrado como propriedade de</label>
             <select class="form-select" id="proprietarioContrato" name="proprietario"></select>
           </div>
           <div id="camposCredito" class="border rounded p-2 d-none">
-            <div class="mb-2">
-              <label class="form-label" for="bancoId">Banco concedente</label>
-              <select class="form-select" id="bancoId" name="bancoId"></select>
-            </div>
+            <input type="hidden" name="bancoId">
+            <p class="mb-2">Banco concedente: <strong id="nomeBanco"></strong></p>
             <div class="row g-2">
               <div class="col-7">
                 <label class="form-label" for="valor">Valor do crédito (R$)</label>

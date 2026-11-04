@@ -5,14 +5,12 @@ export const TipoAgente = Object.freeze({
   BANCO: 'BANCO',
 });
 
-// Agentes (empresas e bancos) modificam e avaliam pedidos.
 export class Agente extends Usuario {
   constructor(dados = {}) {
     super(dados);
     this.cnpj = dados.cnpj || '';
   }
 
-  // Cria a subclasse correta a partir do campo "tipo" salvo no db.json.
   static criar(dados) {
     return dados.tipo === TipoAgente.BANCO ? new Banco(dados) : new Empresa(dados);
   }

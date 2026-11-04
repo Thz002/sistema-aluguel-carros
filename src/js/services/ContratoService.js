@@ -1,19 +1,24 @@
 import { BaseService } from './BaseService.js';
 import { PedidoService } from './PedidoService.js';
 import { AutomovelService } from './AutomovelService.js';
+import { AgenteService } from './AgenteService.js';
 import { Contrato } from '../models/Contrato.js';
+import { TipoAgente } from '../models/Agente.js';
 
 class ContratoServiceImpl extends BaseService {
   constructor() {
     super('contratos', Contrato);
   }
 
-  // Executa o contrato de um pedido aprovado: grava o contrato, marca o pedido
-  // como CONTRATADO e registra o proprietário do automóvel.
   async executar(dadosContrato) {
     const contrato = new Contrato(dadosContrato);
     const erros = contrato.validar();
     if (erros.length) throw new Error(erros.join(' '));
+
+    if (contrato.credito) {
+      const banco = await AgenteService.buscarPorId(contrato.credito.bancoId);
+      if (banco.tipo !== TipoAgente.BANCO) throw new Error('Somente bancos podem conceder crédito.');
+    }
 
     const pedido = await PedidoService.buscarPorId(contrato.pedidoId);
     pedido.marcarComoContratado();

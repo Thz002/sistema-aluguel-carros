@@ -7,7 +7,6 @@ class ClienteServiceImpl extends BaseService {
     super('clientes', Cliente);
   }
 
-  // Login precisa ser único entre clientes e agentes.
   async loginDisponivel(login, idAtual = null) {
     const [clientes, agentes] = await Promise.all([
       Api.listar('clientes', { login }),
@@ -16,9 +15,17 @@ class ClienteServiceImpl extends BaseService {
     return agentes.length === 0 && clientes.every((c) => Number(c.id) === Number(idAtual));
   }
 
+  async cpfDisponivel(cpf, idAtual = null) {
+    const clientes = await Api.listar('clientes', { cpf });
+    return clientes.every((c) => Number(c.id) === Number(idAtual));
+  }
+
   async salvar(cliente) {
     if (!(await this.loginDisponivel(cliente.login, cliente.id))) {
       throw new Error('Este login já está em uso.');
+    }
+    if (!(await this.cpfDisponivel(cliente.cpf, cliente.id))) {
+      throw new Error('Já existe um cliente cadastrado com este CPF.');
     }
     return super.salvar(cliente);
   }

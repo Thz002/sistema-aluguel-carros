@@ -1,0 +1,120 @@
+@startuml classes
+title Sistema de Aluguel de Carros - Diagrama de Classes (v3)
+skinparam classAttributeIconSize 0
+hide empty members
+
+package models {
+  abstract class Usuario {
+    - id : number
+    - login : string
+    - senha : string
+    - nome : string
+    + validar() : string[]
+  }
+
+  class Cliente {
+    - rg : string
+    - cpf : string
+    - endereco : string
+    - profissao : string
+    - empregos : Emprego[0..3]
+    + rendaTotal() : number
+    + validar() : string[]
+  }
+
+  class Emprego {
+    - entidade : string
+    - rendimento : number
+  }
+
+  abstract class Agente {
+    - cnpj : string
+    + {static} criar(dados) : Agente
+  }
+
+  class Empresa
+  class Banco
+
+  class Automovel {
+    - id : number
+    - matricula : string
+    - ano : number
+    - marca : string
+    - modelo : string
+    - placa : string
+    - proprietarioTipo : TipoProprietario
+    - proprietarioId : number
+    + descricao() : string
+    + validar() : string[]
+  }
+
+  class Pedido {
+    - id : number
+    - dataInicio : date
+    - dataFim : date
+    - status : StatusPedido
+    - parecer : string
+    - dataCriacao : date
+    + podeSerModificadoPeloCliente() : boolean
+    + podeSerModificadoPeloAgente() : boolean
+    + podeSerCancelado() : boolean
+    + podeSerAvaliado() : boolean
+    + podeGerarContrato() : boolean
+    + reservaAutomovel() : boolean
+    + conflitaCom(outro : Pedido) : boolean
+    + cancelar() : void
+    + avaliar(agenteId, aprovado, parecer) : void
+    + marcarComoContratado() : void
+    + validar() : string[]
+  }
+
+  class Contrato {
+    - id : number
+    - tipo : TipoContrato
+    - proprietarioTipo : TipoProprietario
+    - proprietarioId : number
+    - dataAssinatura : date
+    + validar() : string[]
+  }
+
+  class ContratoCredito {
+    - valor : number
+    - parcelas : number
+    + valorParcela() : number
+  }
+
+  enum StatusPedido {
+    PENDENTE
+    APROVADO
+    REPROVADO
+    CANCELADO
+    CONTRATADO
+  }
+
+  enum TipoContrato {
+    SIMPLES
+    CREDITO
+  }
+
+  enum TipoProprietario {
+    CLIENTE
+    AGENTE
+  }
+}
+
+Usuario <|-- Cliente
+Usuario <|-- Agente
+Agente <|-- Empresa
+Agente <|-- Banco
+
+Cliente "1" *-- "0..3" Emprego : possui
+Cliente "1" -- "0..*" Pedido : faz >
+Pedido "0..*" -- "1" Automovel : refere-se a >
+Agente "0..1" -- "0..*" Pedido : avalia >
+Pedido "1" -- "0..1" Contrato : gera >
+Contrato "1" *-- "0..1" ContratoCredito
+Banco "1" -- "0..*" ContratoCredito : concede >
+Automovel ..> TipoProprietario
+Pedido ..> StatusPedido
+Contrato ..> TipoContrato
+@enduml

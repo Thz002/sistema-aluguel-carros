@@ -3,15 +3,19 @@ import { PedidoService } from '../services/PedidoService.js';
 import { AutomovelService } from '../services/AutomovelService.js';
 import { ContratoService } from '../services/ContratoService.js';
 import { Pedido } from '../models/Pedido.js';
+import { hojeISO } from '../models/datas.js';
 import { PedidoView } from '../views/PedidoView.js';
 import { mostrarAlerta } from '../views/componentes.js';
 
-// Página do cliente: introduzir, modificar, consultar e cancelar pedidos.
 const usuario = iniciarPagina({ tiposPermitidos: ['CLIENTE'] });
 
 const form = document.getElementById('formPedido');
 const tabela = document.getElementById('tabelaPedidos');
 let automoveis = [];
+
+const hoje = hojeISO();
+form.elements.dataInicio.min = hoje;
+form.elements.dataFim.min = hoje;
 
 function novoFormulario() {
   form.reset();
@@ -38,9 +42,9 @@ form.addEventListener('submit', async (evento) => {
   evento.preventDefault();
   try {
     const dados = PedidoView.lerFormulario(form);
+    if (dados.dataInicio && dados.dataInicio < hoje) throw new Error('A data de início não pode ser anterior a hoje.');
     let pedido;
     if (dados.id) {
-      // Modificação: mantém status e demais dados, troca só o que o cliente editou.
       const atual = await PedidoService.buscarPorId(dados.id);
       if (!atual.podeSerModificadoPeloCliente()) throw new Error('Este pedido já foi avaliado e não pode ser modificado.');
       pedido = new Pedido({ ...atual, ...dados });

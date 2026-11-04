@@ -1,13 +1,15 @@
+import { hojeISO } from './datas.js';
+
 export const StatusPedido = Object.freeze({
-  PENDENTE: 'PENDENTE',     // criado pelo cliente, aguardando análise financeira
-  APROVADO: 'APROVADO',     // parecer positivo do agente, aguardando contrato
-  REPROVADO: 'REPROVADO',   // parecer negativo do agente
-  CANCELADO: 'CANCELADO',   // cancelado pelo cliente
-  CONTRATADO: 'CONTRATADO', // contrato executado
+  PENDENTE: 'PENDENTE',
+  APROVADO: 'APROVADO',
+  REPROVADO: 'REPROVADO',
+  CANCELADO: 'CANCELADO',
+  CONTRATADO: 'CONTRATADO',
 });
 
 export class Pedido {
-  constructor({ id = null, clienteId = null, automovelId = null, dataInicio = '', dataFim = '', status = StatusPedido.PENDENTE, parecer = '', agenteId = null, dataCriacao = new Date().toISOString().slice(0, 10) } = {}) {
+  constructor({ id = null, clienteId = null, automovelId = null, dataInicio = '', dataFim = '', status = StatusPedido.PENDENTE, parecer = '', agenteId = null, dataCriacao = hojeISO() } = {}) {
     this.id = id ? Number(id) : null;
     this.clienteId = clienteId === null ? null : Number(clienteId);
     this.automovelId = automovelId === null ? null : Number(automovelId);
@@ -19,12 +21,10 @@ export class Pedido {
     this.dataCriacao = dataCriacao;
   }
 
-  // O cliente só altera o pedido enquanto ele não foi avaliado.
   podeSerModificadoPeloCliente() {
     return this.status === StatusPedido.PENDENTE;
   }
 
-  // O agente pode alterar pedidos que ainda não viraram contrato.
   podeSerModificadoPeloAgente() {
     return [StatusPedido.PENDENTE, StatusPedido.APROVADO].includes(this.status);
   }
@@ -39,6 +39,17 @@ export class Pedido {
 
   podeGerarContrato() {
     return this.status === StatusPedido.APROVADO;
+  }
+
+  reservaAutomovel() {
+    return [StatusPedido.APROVADO, StatusPedido.CONTRATADO].includes(this.status);
+  }
+
+  conflitaCom(outro) {
+    return outro.id !== this.id
+      && outro.automovelId === this.automovelId
+      && this.dataInicio <= outro.dataFim
+      && outro.dataInicio <= this.dataFim;
   }
 
   cancelar() {

@@ -3,7 +3,6 @@ import { descricaoAutomovel } from './PedidoView.js';
 import { nomeProprietario } from './AutomovelView.js';
 
 export const AvaliacaoView = {
-  // Tabela de pedidos para os agentes, com renda do cliente para a análise financeira.
   renderizarPedidos(tbody, pedidos, clientes, automoveis) {
     if (!pedidos.length) {
       tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">Nenhum pedido encontrado.</td></tr>';
@@ -60,9 +59,5 @@ export const AvaliacaoView = {
         ${(cliente?.empregos ?? []).map((e) => `<li>${escapar(e.entidade)}: ${formatarMoeda(e.rendimento)}</li>`).join('')}
       </ul>
       <p class="fw-semibold">Renda total: ${formatarMoeda(cliente?.rendaTotal())}</p>`;
-  },
-
-  opcoesBancos(bancos, selecionado) {
-    return bancos.map((b) => `<option value="${b.id}" ${b.id === selecionado ? 'selected' : ''}>${escapar(b.nome)}</option>`).join('');
   },
 };

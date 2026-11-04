@@ -37,7 +37,9 @@ Requisitos principais do enunciado:
 - Cadastro de automóveis (agentes)
 - Pedidos de aluguel: o cliente cria, altera, cancela e acompanha o status
 - Avaliação financeira: o agente vê a renda do cliente e aprova ou reprova com um parecer
-- Execução do contrato, simples ou com crédito (banco, valor e parcelas)
+- Execução do contrato, simples ou com crédito (valor e parcelas). Só um banco pode conceder o crédito
+- Controle de reserva: o mesmo carro não pode ter dois pedidos aprovados ou contratados no mesmo período
+- Validações no cadastro: login e CPF únicos, CPF com 11 dígitos, no máximo 3 rendimentos
 
 Status possíveis de um pedido:
 
@@ -76,14 +78,17 @@ Os arquivos `.puml` estão em `docs/diagramas`, separados por versão. As histó
 |---|---|
 | v1 | Versão inicial: casos de uso, classes, pacotes e componentes. |
 | v2 | Entrada da tela de login: `LoginController` no diagrama de pacotes, tela de login e armazenamento da sessão no diagrama de componentes, ligação entre "Autenticar" e "Cadastrar-se" no diagrama de casos de uso. O diagrama de classes não mudou. |
+| v3 | Regras de reserva: métodos `reservaAutomovel()` e `conflitaCom()` na classe `Pedido`, para impedir que o mesmo carro seja reservado duas vezes no mesmo período. Só o diagrama de classes mudou; os outros continuam iguais aos da v2. |
 
-Diagramas atuais (v2):
+Diagramas atuais (casos de uso, pacotes e componentes da v2; classes da v3):
 
 Casos de uso
 
 <img width="757" height="901" alt="image" src="https://github.com/user-attachments/assets/9f3fc6f0-9eae-4f85-ad7d-9669712b063f" />
 
 Classes
+
+<imagem do diagrama de classes v3 aqui>
 
 <img width="550" height="892" alt="image" src="https://github.com/user-attachments/assets/bb15cd1c-8563-4b52-ae2f-f44e8dd797dd" />
 

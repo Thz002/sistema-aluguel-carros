@@ -1,6 +1,5 @@
 import { Api } from './Api.js';
 
-// CRUD genérico: converte os dados do JSON Server em instâncias do modelo.
 export class BaseService {
   constructor(recurso, Modelo) {
     this.recurso = recurso;
@@ -25,7 +24,7 @@ export class BaseService {
     if (erros.length) throw new Error(erros.join(' '));
 
     const dados = { ...entidade };
-    if (!dados.id) delete dados.id; // o JSON Server gera o id no POST
+    if (!dados.id) delete dados.id;
     const salvo = entidade.id
       ? await Api.atualizar(this.recurso, entidade.id, dados)
       : await Api.criar(this.recurso, dados);

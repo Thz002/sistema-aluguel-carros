@@ -2,7 +2,6 @@ import { Usuario } from './Usuario.js';
 
 export const MAX_EMPREGOS = 3;
 
-// Entidade empregadora e o rendimento auferido nela.
 export class Emprego {
   constructor({ entidade = '', rendimento = 0 } = {}) {
     this.entidade = entidade;
@@ -31,7 +30,7 @@ export class Cliente extends Usuario {
   validar() {
     const erros = super.validar();
     if (!this.rg.trim()) erros.push('RG é obrigatório.');
-    if (!this.cpf.trim()) erros.push('CPF é obrigatório.');
+    if (this.cpf.replace(/\D/g, '').length !== 11) erros.push('CPF deve ter 11 dígitos.');
     if (!this.endereco.trim()) erros.push('Endereço é obrigatório.');
     if (this.empregos.length > MAX_EMPREGOS) {
       erros.push(`Informe no máximo ${MAX_EMPREGOS} rendimentos.`);

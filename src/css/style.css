@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-/* Identidade visual da Vértice (mesma paleta da tela de login) aplicada ao Bootstrap. */
 :root {
   --vertice-azul: #122c44;
   --vertice-azul-hover: #1a3d5d;

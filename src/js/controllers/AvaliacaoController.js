@@ -11,7 +11,6 @@ import { PedidoView } from '../views/PedidoView.js';
 import { opcoesProprietario, chaveProprietario } from '../views/AutomovelView.js';
 import { mostrarAlerta } from '../views/componentes.js';
 
-// Página dos agentes (empresas e bancos): modificar e avaliar pedidos e executar contratos.
 const usuario = iniciarPagina({ tiposPermitidos: ['EMPRESA', 'BANCO'] });
 
 const tabelaPedidos = document.getElementById('tabelaPedidos');
@@ -67,6 +66,10 @@ function abrirAvaliacao(pedido) {
 function alternarCamposCredito() {
   const ehCredito = formContrato.elements.tipo.value === TipoContrato.CREDITO;
   document.getElementById('camposCredito').classList.toggle('d-none', !ehCredito);
+  const pedido = buscarPedido(Number(formContrato.elements.pedidoId.value));
+  formContrato.elements.proprietario.value = ehCredito
+    ? chaveProprietario('AGENTE', usuario.id)
+    : chaveProprietario('CLIENTE', pedido.clienteId);
 }
 
 function abrirContrato(pedido) {
@@ -75,15 +78,18 @@ function abrirContrato(pedido) {
   formContrato.elements.proprietario.innerHTML = opcoesProprietario(
     clientes.filter((c) => c.id === pedido.clienteId),
     agentes,
-    chaveProprietario('CLIENTE', pedido.clienteId),
   );
-  const bancos = agentes.filter((a) => a.tipo === 'BANCO');
-  formContrato.elements.bancoId.innerHTML = AvaliacaoView.opcoesBancos(bancos, usuario.tipo === 'BANCO' ? usuario.id : null);
+
+  const ehBanco = usuario.tipo === 'BANCO';
+  formContrato.elements.tipo.querySelector('[value=CREDITO]').disabled = !ehBanco;
+  document.getElementById('avisoCredito').classList.toggle('d-none', ehBanco);
+  formContrato.elements.bancoId.value = ehBanco ? usuario.id : '';
+  document.getElementById('nomeBanco').textContent = usuario.nome;
+
   alternarCamposCredito();
   modal('modalContrato').show();
 }
 
-// Limpa os alertas de erro sempre que um modal é aberto.
 document.querySelectorAll('.modal').forEach((m) => {
   m.addEventListener('show.bs.modal', () => (m.querySelector('.alertas-modal').innerHTML = ''));
 });
@@ -116,7 +122,6 @@ formEditar.addEventListener('submit', async (evento) => {
   }
 });
 
-// Os dois botões do formulário (Aprovar / Reprovar) enviam o parecer.
 formAvaliar.addEventListener('submit', async (evento) => {
   evento.preventDefault();
   const aprovado = evento.submitter.value === 'aprovar';

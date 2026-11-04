@@ -1,6 +1,5 @@
 import { escapar } from './componentes.js';
 
-// Valor usado nos <select> de proprietário: "TIPO:id" (ex.: "AGENTE:1").
 export function chaveProprietario(tipo, id) {
   return `${tipo}:${id}`;
 }

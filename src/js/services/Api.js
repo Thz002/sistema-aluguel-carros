@@ -1,4 +1,3 @@
-// Comunicação com a API REST do JSON Server via Fetch API.
 const BASE_URL = 'http://localhost:3000';
 
 async function requisicao(caminho, opcoes = {}) {

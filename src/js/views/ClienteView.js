@@ -30,7 +30,6 @@ export const ClienteView = {
     container.appendChild(linha);
   },
 
-  // Desabilita o botão quando o limite de rendimentos é atingido.
   atualizarBotaoEmprego(container, botao) {
     botao.disabled = container.querySelectorAll('.emprego').length >= MAX_EMPREGOS;
   },

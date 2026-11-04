@@ -1,6 +1,5 @@
 import { SessaoService } from '../services/SessaoService.js';
 
-// Quem já está logado vai direto para o início.
 if (SessaoService.obter()) window.location.href = 'index.html';
 
 const form = document.getElementById('formLogin');

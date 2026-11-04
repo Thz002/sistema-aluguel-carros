@@ -1,4 +1,3 @@
-// Classe base para todos os usuários do sistema (clientes e agentes).
 export class Usuario {
   constructor({ id = null, login = '', senha = '', nome = '' } = {}) {
     this.id = id ? Number(id) : null;

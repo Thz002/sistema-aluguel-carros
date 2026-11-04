@@ -5,8 +5,6 @@ import { Cliente } from '../models/Cliente.js';
 import { ClienteView } from '../views/ClienteView.js';
 import { mostrarAlerta } from '../views/componentes.js';
 
-// Página pública: sem login funciona como cadastro; cliente edita os próprios
-// dados; agente tem acesso ao CRUD completo.
 const usuario = iniciarPagina({ publica: true });
 const ehAgente = SessaoService.ehAgente(usuario);
 const ehCliente = usuario?.tipo === 'CLIENTE';
@@ -90,7 +88,6 @@ tabela.addEventListener('click', async (evento) => {
   }
 });
 
-// Ajusta a tela conforme o tipo de acesso.
 novoFormulario();
 if (ehAgente) {
   carregarTabela().catch((erro) => mostrarAlerta(erro.message, 'danger'));

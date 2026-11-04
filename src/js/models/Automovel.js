@@ -1,4 +1,3 @@
-// Proprietário do automóvel: um cliente ou um agente (empresa ou banco).
 export const TipoProprietario = Object.freeze({
   CLIENTE: 'CLIENTE',
   AGENTE: 'AGENTE',

@@ -1,11 +1,11 @@
 import { TipoProprietario } from './Automovel.js';
+import { hojeISO } from './datas.js';
 
 export const TipoContrato = Object.freeze({
   SIMPLES: 'SIMPLES',
   CREDITO: 'CREDITO',
 });
 
-// Contrato de crédito concedido por um dos bancos agentes.
 export class ContratoCredito {
   constructor({ bancoId = null, valor = 0, parcelas = 1 } = {}) {
     this.bancoId = bancoId === null ? null : Number(bancoId);
@@ -19,7 +19,7 @@ export class ContratoCredito {
 }
 
 export class Contrato {
-  constructor({ id = null, pedidoId = null, tipo = TipoContrato.SIMPLES, proprietarioTipo = TipoProprietario.CLIENTE, proprietarioId = null, dataAssinatura = new Date().toISOString().slice(0, 10), credito = null } = {}) {
+  constructor({ id = null, pedidoId = null, tipo = TipoContrato.SIMPLES, proprietarioTipo = TipoProprietario.CLIENTE, proprietarioId = null, dataAssinatura = hojeISO(), credito = null } = {}) {
     this.id = id ? Number(id) : null;
     this.pedidoId = pedidoId === null ? null : Number(pedidoId);
     this.tipo = tipo;
