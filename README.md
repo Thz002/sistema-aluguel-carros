@@ -1,6 +1,6 @@
 # Sistema de Aluguel de Carros (Vértice Automóveis)
 
-Trabalho do Laboratório 02 da disciplina de Desenvolvimento de Interfaces Web (DIW), Engenharia de Software, PUC Minas.
+Trabalho do Laboratório 02 da disciplina de Desenvolvimento de Interfaces Web (DIW), Ciências da Computação, PUC Minas.
 
 O sistema serve para gerenciar aluguéis de carros pela internet. O cliente faz o pedido de aluguel e acompanha o andamento. Os agentes (empresas e bancos) fazem a análise financeira do pedido e, se aprovarem, executam o contrato, que pode ou não ter um crédito concedido por um banco.
 
@@ -88,9 +88,14 @@ Casos de uso
 
 Classes
 
+<<<<<<< HEAD
 <imagem do diagrama de classes v3 aqui>
 
 <img width="550" height="892" alt="image" src="https://github.com/user-attachments/assets/bb15cd1c-8563-4b52-ae2f-f44e8dd797dd" />
+=======
+<img width="543" height="893" alt="image" src="https://github.com/user-attachments/assets/73758e19-7d1f-40b4-a652-fcc11fe7adf8" />
+
+>>>>>>> f634f6d60e1d41b1a5402b9bd7ecda69a9be9f17
 
 
 Pacotes
@@ -186,12 +191,7 @@ Escolha de Automóveis
 - [JSON Server](https://github.com/typicode/json-server/tree/v0)
 - [Fetch API (MDN)](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API)
 - [PlantUML](https://plantuml.com/pt/)
-- [Repositório da disciplina](https://github.com/joaopauloaramuni/desenvolvimento-de-interfaces-web)
-
+- 
 ## Autor
 
 Thiago Duarte - [github.com/Thz002](https://github.com/Thz002)
-
-## Licença
-
-MIT
